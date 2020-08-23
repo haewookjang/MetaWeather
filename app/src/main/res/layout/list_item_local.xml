@@ -5,14 +5,14 @@
     <data>
 
         <import type="androidx.lifecycle.LiveData" />
-
+        <import type="io.hwjang.app.weather.data.model.Location"/>
         <variable
             name="item"
             type="io.hwjang.app.weather.data.model.Location" />
 
         <variable
             name="location"
-            type="LiveData&lt;hwjangang.app.weather.data.model.Location>" />
+            type="LiveData&lt;Location>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
