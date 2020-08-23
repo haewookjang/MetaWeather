@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="weather_icon_width">50dp</dimen>
+    <dimen name="weather_icon_height">50dp</dimen>
+    <dimen name="weather_icon_area">70dp</dimen>
+    <integer name="header_locale_weight">14</integer>
+    <integer name="header_today_weight">43</integer>
+    <integer name="header_tomorrow_weight">43</integer>
+</resources>

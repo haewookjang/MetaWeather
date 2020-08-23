@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weather"
+            type="io.hwjang.app.weather.data.model.ConsolidatedWeather" />
+    </data>
+
+    <merge
+        android:layout_width="match_parent"
+        tools:layout_height="wrap_content"
+        tools:layout_width="match_parent"
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/weather_icon_area" />
+
+        <!-- 날씨 이미지 -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weather_icon"
+            style="@style/Weather.Icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_start"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:weatherIcon="@{weather.weatherIcon}" />
+
+        <!-- 날씨 상태-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weather_state_name"
+            style="@style/Weather.State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weather.weatherStateName}"
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/weather_icon" />
+
+        <!-- 온도 -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weather_temp"
+            style="@style/Weather.Temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/weather_icon"
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/weather_state_name"
+            app:toHtml="@{@string/weather_temp(weather.theTemp)}" />
+
+
+        <!-- 습도 -->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weather_humidity"
+            style="@style/Weather.Humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/weather_icon"
+            app:layout_constraintStart_toEndOf="@id/weather_temp"
+            app:layout_constraintTop_toBottomOf="@id/weather_state_name"
+            app:toHtml="@{@string/weather_humidity(weather.humidity)}" />
+
+    </merge>
+</layout>

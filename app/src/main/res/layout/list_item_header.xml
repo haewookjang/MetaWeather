@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/header_locale"
+            style="@style/Header.Title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/label_local"
+            app:layout_constraintEnd_toStartOf="@id/header_today"
+            app:layout_constraintHorizontal_weight="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/header_today"
+            style="@style/Header.Title.Today"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/label_today"
+            app:layout_constraintEnd_toStartOf="@id/header_tomorrow"
+            app:layout_constraintHorizontal_weight="0.425"
+            app:layout_constraintStart_toEndOf="@id/header_locale"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/header_tomorrow"
+            style="@style/Header.Title.Today"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/label_tomorrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.425"
+            app:layout_constraintStart_toEndOf="@id/header_today"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

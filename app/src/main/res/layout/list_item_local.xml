@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="androidx.lifecycle.LiveData" />
+
+        <variable
+            name="item"
+            type="io.hwjang.app.weather.data.model.Location" />
+
+        <variable
+            name="location"
+            type="LiveData&lt;hwjangang.app.weather.data.model.Location>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/city"
+            style="@style/Weather.Local"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@{item.title}"
+            app:layout_constraintEnd_toStartOf="@id/weather_today"
+            app:layout_constraintHorizontal_weight="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- today -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weather_today"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@id/weather_tomorrow"
+            app:layout_constraintHorizontal_weight="0.425"
+            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/inc_weather"
+                app:weather="@{item.consolidatedWeather.get(0)}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- tomorrow-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weather_tomorrow"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.425"
+            app:layout_constraintStart_toEndOf="@id/weather_today"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/inc_weather"
+                app:weather="@{item.consolidatedWeather.get(1)}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

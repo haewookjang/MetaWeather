@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Local Weather</string>
+    <string name="toast_error_network_disconnect">네트워크를 사용할 수 없습니다.</string>
+    <string name="toast_error_server">서버로부터 응답이 없습니다</string>
+    <string name="label_local">Local</string>
+    <string name="label_tomorrow">Tomorrow</string>
+    <string name="label_today">Today</string>
+    <string name="weather_temp"><![CDATA[<b>%.0f</b>\u2103]]></string>
+    <string name="weather_humidity"><![CDATA[<b>%d</b>%%]]></string>
+</resources>

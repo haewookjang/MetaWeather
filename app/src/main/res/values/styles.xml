@@ -1,0 +1,64 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/loading</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:background">@color/bg_header</item>
+    </style>
+
+    <style name="Header.Title">
+
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Header.Title.Today">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Weather" />
+
+    <style name="Weather.Local">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/weather_locale</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="Weather.Icon">
+        <item name="android:layout_height">@dimen/weather_icon_height</item>
+        <item name="android:layout_width">@dimen/weather_icon_width</item>
+    </style>
+
+    <style name="Weather.State">
+        <item name="android:textColor">@color/weather_state</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Weather.Temp">
+        <item name="android:textColor">@color/weather_temp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Weather.Humidity">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textColor">@color/weather_humidity</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
