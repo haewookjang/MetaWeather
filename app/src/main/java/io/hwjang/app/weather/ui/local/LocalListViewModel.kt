@@ -12,6 +12,7 @@ import io.hwjang.app.weather.domain.usecase.GetConsolidatedWeatherUseCase
 import io.hwjang.app.weather.domain.usecase.LocationSearchUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,6 @@ import kotlinx.coroutines.launch
 @ExperimentalCoroutinesApi
 class LocalListViewModel @ViewModelInject constructor(
     private val locationSearchUseCase: LocationSearchUseCase,
-    private val getConsolidatedWeatherUseCase: GetConsolidatedWeatherUseCase,
     val weatherService: WeatherService
 ) :
     BaseViewModel() {
@@ -34,14 +34,14 @@ class LocalListViewModel @ViewModelInject constructor(
     private val cityList = Transformations.switchMap(_query) { q ->
         q?.let {
             locationSearchUseCase(q)
-                .onEach { it ->
-                    when (it) {
+                .onEach { response ->
+                    when (response) {
                         is HttpResponse.Loading -> {
                             onLoadingStart()
                         }
                         is HttpResponse.Error -> {
                             onLoadingStop()
-                            onError(it.exception)
+                            onError(response.exception)
                         }
                     }
                 }
@@ -63,11 +63,11 @@ class LocalListViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             cityList.asFlow()
                 .onEach {
+                    localWeatherList.clear()
                     request = it.size
                 }.flatMapMerge {
                     it.asFlow()
-                }
-                .collect {
+                }.collect {
                     getLocalWeatherData(it)
                 }
         }
@@ -95,7 +95,9 @@ class LocalListViewModel @ViewModelInject constructor(
                             sorter?.indexOf(l?.woeid) ?: 0
                         })
                     }
-                    result.postValue(localWeatherList)
+                    // header
+                    localWeatherList.add(0, null)
+                    result.postValue(localWeatherList.toList())
                     onLoadingStop()
                 }
             }
@@ -117,8 +119,7 @@ class LocalListViewModel @ViewModelInject constructor(
             return
         }
         _swipeLoading.value = true
-        localWeatherList.clear()
-        result.postValue(localWeatherList)
+        result.value = emptyList()
         load()
     }
 
