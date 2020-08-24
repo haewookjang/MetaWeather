@@ -10,8 +10,12 @@ import io.hwjang.app.weather.base.BaseDataBindingFragment
 import io.hwjang.app.weather.databinding.FragmentLocalListBinding
 import io.hwjang.app.weather.ui.local.adapter.LocationListAdapter
 import io.hwjang.app.weather.widget.decoration.DividerDecoration
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @AndroidEntryPoint
 class LocalListFragment :
     BaseDataBindingFragment<FragmentLocalListBinding, LocalListViewModel>(R.layout.fragment_local_list) {
