@@ -46,10 +46,6 @@ class LocationListAdapter @Inject constructor(val weatherService: WeatherService
         }
     }
 
-    override fun getItemCount(): Int {
-        val count = super.getItemCount()
-        return if (count == 0) 0 else count + 1
-    }
 
     fun getHeaderViewType() = getDataBindingLayout(0)
     override fun onBindViewHolder(
@@ -57,7 +53,7 @@ class LocationListAdapter @Inject constructor(val weatherService: WeatherService
         position: Int
     ) {
         if (position > 0) {
-            getItem(position-1)?.let {
+            getItem(position)?.let {
                 holder.bind(it, position)
             }
         }
